@@ -228,3 +228,184 @@ A pure JavaScript function and a functional component in React are related but s
    ```
 
 In summary, a JavaScript function is a general-purpose block of code, while a functional component in React is specifically designed for building UI components in a React application. The latter is a specialized use of the former in the context of a React application.
+
+## How small is a React component?
+
+The size of a React component can vary based on several factors, and there isn't a fixed definition of how small or large a component should be. The size of a component is influenced by its code complexity, the functionality it provides, the number of lines of code, the number of dependencies, and the overall design of the application.
+
+In React, it's often recommended to follow the principles of **modularity and reusability**. Breaking down your user interface into smaller, manageable components can make your codebase more maintainable and easier to understand. Smaller components are generally easier to reason about, test, and maintain.
+
+Here are a few considerations for determining the size of a React component:
+
+1. **Single Responsibility Principle (SRP):** Each component should ideally have a single responsibility. If a component is doing too much (handling too many concerns), it might be a sign that it needs to be broken down into smaller, more focused components.
+
+2. **Reusability:** Components that are designed to be reused in different parts of your application or even across projects should be relatively small and encapsulate specific functionality.
+
+3. **Readability and Maintainability:** A component should be easy to read and understand. If a component becomes too long or complex, it might be harder for developers (including yourself) to maintain and extend it.
+
+4. **Dependencies:** If a component has a large number of dependencies, it may increase its size. Consider whether all dependencies are necessary and if some functionality can be modularized or abstracted.
+
+5. **Component Hierarchy:** Instead of having a single large component, consider breaking it down into a hierarchy of smaller components. This can improve the structure of your application.
+
+Keep in mind that the goal is not to make components as small as possible but to strike a balance between granularity and maintainability. It's crucial to consider the specific requirements and architecture of your application when deciding the size of your React components.
+
+## Can we make a button or input field component?
+
+Absolutely, you can create reusable Button and InputField components in React. This is a common practice to promote code reusability and maintainability. Here's an example of how you might create these components:
+
+### Button Component:
+
+```jsx
+// Button.js
+import React from 'react';
+
+const Button = ({ onClick, children, className }) => {
+  return (
+    <button className={className} onClick={onClick}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;
+```
+
+In this example, the `Button` component takes three props:
+- `onClick`: a function to be executed when the button is clicked.
+- `children`: the content of the button, typically the text.
+- `className`: an optional CSS class for styling.
+
+### InputField Component:
+
+```jsx
+// InputField.js
+import React from 'react';
+
+const InputField = ({ type, placeholder, value, onChange, className }) => {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      className={className}
+    />
+  );
+};
+
+export default InputField;
+```
+
+Here, the `InputField` component takes several props:
+- `type`: the type of the input field (text, password, etc.).
+- `placeholder`: a placeholder text displayed when the input is empty.
+- `value`: the current value of the input field.
+- `onChange`: a function to be called when the input value changes.
+- `className`: an optional CSS class for styling.
+
+You can use these components in your application like this:
+
+```jsx
+// App.js
+import React, { useState } from 'react';
+import Button from './Button';
+import InputField from './InputField';
+
+const App = () => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleClick = () => {
+    alert('Button Clicked!');
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  return (
+    <div>
+      <InputField
+        type="text"
+        placeholder="Enter text..."
+        value={inputValue}
+        onChange={handleInputChange}
+        className="custom-input"
+      />
+      <Button onClick={handleClick} className="custom-button">
+        Click me!
+      </Button>
+    </div>
+  );
+};
+
+export default App;
+```
+
+This is just a simple example, and you can extend these components based on your specific requirements. Creating reusable components like these can make your codebase cleaner and more maintainable.
+
+## Make a reusable alert box component with one div parent element and one p child element of the div(warning alert box, success alert box).
+
+Certainly! Below is an example of a reusable alert box component in React with a parent `div` element and a child `p` element. The component takes two props: `type` for specifying the type of alert (either "warning" or "success"), and `message` for the content of the alert.
+
+```jsx
+// AlertBox.js
+import React from 'react';
+
+const AlertBox = ({ type, message }) => {
+  const alertClassName = `alert-box ${type}`;
+
+  return (
+    <div className={alertClassName}>
+      <p>{message}</p>
+    </div>
+  );
+};
+
+export default AlertBox;
+```
+
+In this example, the `AlertBox` component dynamically assigns a class based on the `type` prop (either "warning" or "success"). You can define corresponding styles in your CSS or use a CSS-in-JS solution like styled-components.
+
+Now, you can use this component in your application:
+
+```jsx
+// App.js
+import React from 'react';
+import AlertBox from './AlertBox';
+
+const App = () => {
+  return (
+    <div>
+      <AlertBox type="warning" message="This is a warning message." />
+      <AlertBox type="success" message="Operation was successful!" />
+    </div>
+  );
+};
+
+export default App;
+```
+
+Ensure you have corresponding styles for your alert types, either in a separate CSS file or using a CSS-in-JS solution:
+
+```css
+/* styles.css */
+.alert-box {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid;
+}
+
+.warning {
+  background-color: #ffeeba;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+```
+
+With this setup, you have a reusable `AlertBox` component that can display warning and success messages with customizable styles.
