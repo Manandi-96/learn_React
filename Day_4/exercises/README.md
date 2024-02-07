@@ -231,23 +231,11 @@ In summary, a JavaScript function is a general-purpose block of code, while a fu
 
 ## How small is a React component?
 
-The size of a React component can vary based on several factors, and there isn't a fixed definition of how small or large a component should be. The size of a component is influenced by its code complexity, the functionality it provides, the number of lines of code, the number of dependencies, and the overall design of the application.
+We have transformed all the JSX elements of Day 2 to functional components, and by now you are very familiar with components. Let's create more components. What is the smallest size of a component? A component that returns only a single HTML as JSX is considered as a small component. A button component or an alert box component, or just an input field component.
 
-In React, it's often recommended to follow the principles of **modularity and reusability**. Breaking down your user interface into smaller, manageable components can make your codebase more maintainable and easier to understand. Smaller components are generally easier to reason about, test, and maintain.
-
-Here are a few considerations for determining the size of a React component:
-
-1. **Single Responsibility Principle (SRP):** Each component should ideally have a single responsibility. If a component is doing too much (handling too many concerns), it might be a sign that it needs to be broken down into smaller, more focused components.
-
-2. **Reusability:** Components that are designed to be reused in different parts of your application or even across projects should be relatively small and encapsulate specific functionality.
-
-3. **Readability and Maintainability:** A component should be easy to read and understand. If a component becomes too long or complex, it might be harder for developers (including yourself) to maintain and extend it.
-
-4. **Dependencies:** If a component has a large number of dependencies, it may increase its size. Consider whether all dependencies are necessary and if some functionality can be modularized or abstracted.
-
-5. **Component Hierarchy:** Instead of having a single large component, consider breaking it down into a hierarchy of smaller components. This can improve the structure of your application.
-
-Keep in mind that the goal is not to make components as small as possible but to strike a balance between granularity and maintainability. It's crucial to consider the specific requirements and architecture of your application when deciding the size of your React components.
+```
+const Button = () => <button>action</button>
+```
 
 ## Can we make a button or input field component?
 
