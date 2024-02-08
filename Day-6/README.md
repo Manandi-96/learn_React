@@ -112,4 +112,3 @@ Overall, destructuring is an important tool in JavaScript for improving code rea
 ## Does destructuring make your code clean and easy to read ?
 
 yes
-
