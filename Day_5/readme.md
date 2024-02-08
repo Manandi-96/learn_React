@@ -152,3 +152,8 @@ In this example:
 
 Using `propTypes` helps catch errors early and provides documentation about the expected interface of your components. It's important to note that `propTypes` are only checked in development mode for performance reasons and are not enforced in production builds.
 
+# What is a default propTypes?
+
+prop-types is a library with which you can check the type of props in React. With defaultProps, we can pass default values to props
+
+
