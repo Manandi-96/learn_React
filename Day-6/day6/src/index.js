@@ -47,7 +47,6 @@ const Number = ({ number }) => {
   const numberStyle = {
     backgroundColor: number.color,
     padding: '10px',
-    margin: '5px',
     borderRadius: '5px',
     color: 'white',
 
@@ -66,7 +65,7 @@ const Numbers = ({ numbers }) => {
     width:'80vw',
     display:'grid',
     gridTemplateColumns:'repeat(5,1fr)', 
-    gap: '10px'
+    gap: '1px'
   }
   
   const numberList = numbers.map(number => <Number key={number.num} number={number} />);
